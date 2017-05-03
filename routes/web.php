@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/about', 'general@about');
+
+
+Route::get('/roster', 'general@roster');
+
+
+Route::get('/RB', 'general@RB');
+
+
+Route::get('/LB', 'general@LB');
+
+
+Route::get('/WR', 'general@WR');
