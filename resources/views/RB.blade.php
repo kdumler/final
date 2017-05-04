@@ -5,20 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Faculty</title>
+    <title>{{ $title }}</title>
 
 
 </head>
 <body>
-<ul>
-    <h1>Faculty List</h1>
+        <h1>{{ $heading }}</h1>
 
-    <ul></ul>
-    @foreach($facultyList as $person)
-        <li>{{ $person }}</li>
-    @endforeach
-</ul>
-<p>{{ count($facultyList) }}</p>
+        <p>{{ $stats }}</p>
 
 </body>
 </html>

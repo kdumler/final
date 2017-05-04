@@ -6,23 +6,27 @@ use Illuminate\Http\Request;
 
 class general extends Controller
 {
-    function about(){
-        $routes = array("/about", "/roster");
 
-        list($about, $roster) = $routes;
-        echo "<li> Go to $about for this page
-              <li> Go to $roster for the roster";
+    public function about()
+    {
+        $result = <<<EOT
+        <pre>
+        /about                       This screen
+        /roster                      Adds 
+        /RB                          Subtracts
+        /LB                          Multiplies two specified numbers
+        /WR                          Divides two specified numbers
+        </pre>
+        
+EOT;
+        return $result;
     }
-    function roster(){
+
+    function roster()
+    {
 
     }
-    function RB(){
-
-    }
-    function LB(){
-
-    }
-    function WR(){
+    function total(){
 
     }
 }
