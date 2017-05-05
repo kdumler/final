@@ -11,42 +11,49 @@
 |
 */
 
+
 Route::get('/about', 'general@about');
 
 
 
 
-Route::get('/roster', 'general@roster');
+Route::get('/roster', 'general@roster');                                    //DONE
 
 
 
 
-Route::get('/total', 'general@total');
+Route::get('/total', 'general@total');                                      //NEED WR AND LB
 
 
 
-//Route::group(['prefix' => 'LB']), function (){
+Route::group(['prefix' => 'RB'], function () {
 
-Route::get('/RB/stats', 'positions@RB');
-Route::get('/RB/compare/{x}/{y}', function ($x, $y){
-    $RB1 = DataBase::RB('TOTAL_YARDS')-> where('NAME', "$x");
-    $RB2 = DataBase::RB('TOTAL_YARDS') -> where('NAME', "$y");
+    Route::get('/stats', 'positions@RB');                                   //DONE
 
-    if($RB1 > $RB2){
-        $result = $RB1 - $RB2;
-    }else{
-        $result = $RB2 - $RB1;
-    }
+    Route::get('/compare/{x}/{y}', function($x , $y){                        //NEEDS TO CALCULATE
+        $queryx = "SELECT TOTAL_YARDS FROM RB WHERE JERSEY_NUMBER = $x";
+        $queryy = "SELECT TOTAL_YARDS FROM RB WHERE JERSEY_NUMBER = $y";
 
-    return "<h1> $x had $result more yards than $y";
-})->where(['x'=> '[A-Z]', 'x'=> '[A-Z]']);
+        $RB1 = \DB::connection('kdumlerfootball')->select($queryx);
+        $RB2 = \DB::connection('kdumlerfootball')->select($queryy);
+
+        if ($RB1 > $RB2) {
+            $result = $RB1 - $RB2;
+        } else {
+            $result = $RB2 - $RB1;
+        }
+
+        return "<h1> $RB1 had $result more yards than $RB2";
+    })->where(['x' => '[0-9]?', 'y' => '[0-9]?']);
 
 
+});
 
 
+Route::group(['prefix' => 'LB'], function () {
 
-    Route::get('/LB/stats', 'positions@LB');
-    Route::get('/LB/compare/{x}/{y}', function ($x, $y) {
+    Route::get('/stats', 'positions@LB');                               //DONE
+    Route::get('/compare/{x}/{y}', function ($x, $y) {                  //NEEDS TO CALCULATE
         $LB1 = DataBase::LB('TOTAL_YARDS')->where('NAME', "$x");
         $LB2 = DataBase::LB('TOTAL_YARDS')->where('NAME', "$y");
 
@@ -59,19 +66,21 @@ Route::get('/RB/compare/{x}/{y}', function ($x, $y){
         return "<h1> $x had $result more yards than $y";
     })->where(['x' => '[A-Z]', 'x' => '[A-Z]']);
 
+});
 
+Route::group(['prefix' => 'WR'], function () {
 
+    Route::get('/stats', 'positions@WR');                               //DONE
+    Route::get('/compare/{x}/{y}', function ($x, $y) {                  //NEEDS TO CALCULATE
+        $WR1 = DataBase::WR('TOTAL_YARDS')->where('NAME', "$x");
+        $WR2 = DataBase::WR('TOTAL_YARDS')->where('NAME', "$y");
 
-Route::get('/WR/stats', 'positions@WR');
-Route::get('/WR/compare/{x}/{y}', function ($x, $y){
-    $WR1 = DataBase::WR('TOTAL_YARDS')-> where('NAME', "$x");
-    $WR2 = DataBase::WR('TOTAL_YARDS') -> where('NAME', "$y");
+        if ($WR1 > $WR2) {
+            $result = $WR1 - $WR2;
+        } else {
+            $result = $WR2 - $WR1;
+        }
 
-    if($WR1 > $WR2){
-        $result = $WR1 - $WR2;
-    }else{
-        $result = $WR2 - $WR1;
-    }
-
-    return "<h1>$x  had $result more yards than $y";
-})->where(['x'=> '[A-Z]', 'x'=> '[A-Z]']);
+        return "<h1>$x  had $result more yards than $y";
+    })->where(['x' => '[A-Z]', 'x' => '[A-Z]']);
+});

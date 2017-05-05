@@ -1,9 +1,9 @@
 @extends ('layouts.master')
 
-@section('title', 'ALL RB STATS')
+@section('title', 'ALL LB STATS')
 
 @section('content')
-        <h2>RB Jersey Number, Name, and Total Rushing Yards</h2>
+        <h2>LB Jersey Number, Name, and Total Rushing Yards</h2>
 
 @endsection
 

@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends ('layouts.master')
 
-    <title>{{ $title }}</title>
+@section('title', 'ALL ROUTES')
 
+@section('content')
+    <h2>List of Routes and what they do</h2>
 
-</head>
-<body>
-<ul>
-    <h1>List of Routes</h1>
+@endsection
 
-    <ul></ul>
-        <li>{{ $routes }}</li>
-</ul>
-*<p>{{ count($facultyList) }}</p>
-
-</body>
-</html>
+@section ('footer')
+    <hr>
+    <p>ALL THE STUFF I NEED</p>
+@endsection

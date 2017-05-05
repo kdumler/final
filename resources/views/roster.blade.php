@@ -1,16 +1,16 @@
 @extends ('layouts.master')
 
-@section('title', 'ALL WR STATS')
+@section('title', 'Roster')
 
 @section('content')
-    <h2>WR Jersey Number, Name, and Total Rushing Yards</h2>
+    <h2>Roster</h2>
 
 @endsection
 
 @section ('footer')
     <hr>
     <table border="1">
-        @foreach($stats as $row)
+        @foreach($roster as $row)
             <tr>
                 @foreach($row as $field)
                     <td>{{$field}}</td>

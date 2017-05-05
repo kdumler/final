@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>CSMP -- @yield('subject')</title>
+    <title>@yield('subject')</title>
 
 
 </head>
@@ -14,7 +14,8 @@
 <hr>
 @yield('content')
 <hr>
-@yield('footer', 'The Default Footer')
+@yield('footer')
+
 
 
 
