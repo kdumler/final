@@ -12,30 +12,30 @@
 */
 
 
-Route::get('/about', 'general@about');
+Route::get('/about', 'general@about');                                      //done
 
 
 
 
-Route::get('/roster', 'general@roster');                                    //DONE
+Route::get('/roster', 'general@roster');
 
 
 
 
-Route::get('/total', 'general@total');                                      //NEED WR AND LB
+Route::get('/total', 'general@total');
 
 
 
 Route::group(['prefix' => 'RB'], function () {
 
-    Route::get('/stats', 'positions@RB');                                   //DONE
+    Route::get('/stats', 'positions@RB');
 
     Route::get('/compare/{x}/{y}', function($x , $y){                        //NEEDS TO CALCULATE
         $queryx = "SELECT TOTAL_YARDS FROM RB WHERE JERSEY_NUMBER = $x";
         $queryy = "SELECT TOTAL_YARDS FROM RB WHERE JERSEY_NUMBER = $y";
 
-        $RB1 = \DB::connection('kdumlerfootball')->select($queryx);
-        $RB2 = \DB::connection('kdumlerfootball')->select($queryy);
+        $RB1 = \DB::where('kdumlerfootball')->select($queryx);
+        $RB2 = \DB::where('kdumlerfootball')->select($queryy);
 
         if ($RB1 > $RB2) {
             $result = $RB1 - $RB2;
@@ -52,7 +52,7 @@ Route::group(['prefix' => 'RB'], function () {
 
 Route::group(['prefix' => 'LB'], function () {
 
-    Route::get('/stats', 'positions@LB');                               //DONE
+    Route::get('/stats', 'positions@LB');
     Route::get('/compare/{x}/{y}', function ($x, $y) {                  //NEEDS TO CALCULATE
         $LB1 = DataBase::LB('TOTAL_YARDS')->where('NAME', "$x");
         $LB2 = DataBase::LB('TOTAL_YARDS')->where('NAME', "$y");
@@ -70,7 +70,7 @@ Route::group(['prefix' => 'LB'], function () {
 
 Route::group(['prefix' => 'WR'], function () {
 
-    Route::get('/stats', 'positions@WR');                               //DONE
+    Route::get('/stats', 'positions@WR');
     Route::get('/compare/{x}/{y}', function ($x, $y) {                  //NEEDS TO CALCULATE
         $WR1 = DataBase::WR('TOTAL_YARDS')->where('NAME', "$x");
         $WR2 = DataBase::WR('TOTAL_YARDS')->where('NAME', "$y");

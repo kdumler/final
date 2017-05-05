@@ -3,13 +3,14 @@
 @section('title', 'Roster')
 
 @section('content')
+        <div class="jumbotron text-center">
     <h2>Roster</h2>
-
+    </div>
 @endsection
 
 @section ('footer')
     <hr>
-    <table border="1">
+    <table class = "table">
         @foreach($roster as $row)
             <tr>
                 @foreach($row as $field)

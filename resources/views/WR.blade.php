@@ -3,13 +3,14 @@
 @section('title', 'ALL WR STATS')
 
 @section('content')
-    <h2>WR Jersey Number, Name, and Total Rushing Yards</h2>
-
+    <div class="jumbotron text-center">
+    <h2>WR Jersey Number, Name, and Total Recieving Yards</h2>
+    </div>
 @endsection
 
 @section ('footer')
     <hr>
-    <table border="1">
+    <table class="table">
         @foreach($stats as $row)
             <tr>
                 @foreach($row as $field)

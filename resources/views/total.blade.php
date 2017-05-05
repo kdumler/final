@@ -3,27 +3,17 @@
 @section('title', 'Total')
 
 @section('content')
-    <h2>Totals</h2>
-
+    <div class="jumbotron text-center">
+    <h2>Totals rushing yards, revieving yards, and tackles</h2>
+    </div>
 @endsection
 
 @section ('footer')
     <hr>
-    @foreach($totalRB as $row)
+    @foreach($total as $row)
         <tr>
             @foreach($row as $field)
-                <li>RB total rushing yards [{{$field}}]</li>
-            @endforeach
-        </tr>
-    @endforeach
-@endsection
-
-@section ('footer')
-    <hr>
-    @foreach($totalWR as $row)
-        <tr>
-            @foreach($row as $field)
-                <li>RB total rushing yards [{{$field}}]</li>
+                <li class="list-group-item">RB total rushing yards [{{$field}}]</li>
             @endforeach
         </tr>
     @endforeach
